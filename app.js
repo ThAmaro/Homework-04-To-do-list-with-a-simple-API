@@ -39,13 +39,8 @@ async function loadTodos() {
   if (!token) return;
 
   const response = await fetch(`${API_URL}/todos`, {
-    method: 'POST',
-    headers: { 
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`,
-  },
-    body: JSON.stringify({ title, description }),
-});
+    headers: { "Authorization": token }
+  });
 
   const todos = await response.json();
   renderTodos(todos);
