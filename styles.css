@@ -1,0 +1,249 @@
+/* Reset e configurações básicas */
+* {
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container principal centralizado */
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* Títulos */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    font-size: 2.2rem;
+}
+
+h2 {
+    text-align: center;
+    color: #34495e;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+/* Seções dos formulários */
+.form-section {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #eaeaea;
+    transition: all 0.3s ease;
+}
+
+.form-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulários */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    max-width: 400px;
+    padding: 14px;
+    margin: 12px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* Botões gerais */
+button {
+    padding: 14px 28px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    min-width: 180px;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Botão de logout */
+.logout-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logout-btn {
+    background-color: #e74c3c;
+    padding: 12px 24px;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Seção de Todos */
+.todos-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+/* Lista de Todos */
+#todoList {
+    list-style-type: none;
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+#todoList li {
+    background-color: white;
+    padding: 18px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border-left: 5px solid #4CAF50;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+#todoList li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#todoList li .todo-content {
+    flex-grow: 1;
+    text-align: left;
+}
+
+#todoList li .todo-title {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+#todoList li .todo-description {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+}
+
+/* Scrollbar personalizada */
+#todoList::-webkit-scrollbar {
+    width: 6px;
+}
+
+#todoList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#todoList::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 10px;
+}
+
+#todoList::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+        align-items: flex-start; /* Em mobile, começa do topo */
+        padding-top: 30px;
+    }
+    
+    .container {
+        padding: 30px;
+        margin: 0;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+    
+    .form-section {
+        padding: 20px;
+    }
+    
+    input, button {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+        padding-top: 20px;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+    
+    button {
+        padding: 12px 20px;
+    }
+    
+    .form-section {
+        padding: 15px;
+    }
+}
