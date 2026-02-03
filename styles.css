@@ -1,4 +1,3 @@
-/* Reset e configurações básicas */
 * {
     margin: 0;
     padding: 10px;
@@ -17,7 +16,6 @@ body {
     padding: 20px;
 }
 
-/* Container principal centralizado */
 .container {
     max-width: 600px;
     width: 100%;
@@ -45,7 +43,6 @@ h2 {
     font-size: 1.5rem;
 }
 
-/* Seções dos formulários */
 .form-section {
     background-color: #f8f9fa;
     padding: 25px;
@@ -60,14 +57,12 @@ h2 {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Formulários */
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Inputs */
 input {
     width: 100%;
     max-width: 400px;
@@ -86,7 +81,6 @@ input:focus {
     box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
 }
 
-/* Botões gerais */
 button {
     padding: 14px 28px;
     background-color: #4CAF50;
@@ -107,7 +101,6 @@ button:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Botão de logout */
 .logout-section {
     text-align: center;
     margin-bottom: 30px;
@@ -122,13 +115,11 @@ button:hover {
     background-color: #c0392b;
 }
 
-/* Seção de Todos */
 .todos-section {
     margin-top: 40px;
-    text-align: center;
+    text-align: justify;
 }
 
-/* Lista de Todos */
 #todoList {
     list-style-type: none;
     margin-top: 20px;
@@ -172,7 +163,6 @@ button:hover {
     font-size: 0.95rem;
 }
 
-/* Scrollbar personalizada */
 #todoList::-webkit-scrollbar {
     width: 6px;
 }
@@ -191,11 +181,10 @@ button:hover {
     background: #a1a1a1;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     body {
         padding: 15px;
-        align-items: flex-start; /* Em mobile, começa do topo */
+        align-items: flex-start;
         padding-top: 30px;
     }
     
