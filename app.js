@@ -10,7 +10,7 @@ function getAuthToken() {
 function logout() {
   document.cookie = "authToken=; Max-Age=0; path=/";
   document.getElementById("todoList").innerHTML = "";
-  showMessage("Logged out", "success");
+  showAuthUI();
 }
 
 function showMessage(msg, type="info") {
@@ -31,6 +31,21 @@ function showMessage(msg, type="info") {
   else div.style.backgroundColor="#3498db";
 
   div.style.color="white";
+}
+
+function showTodosUI() {
+  document.getElementById("authSection").style.display = "none";
+  document.getElementById("todoSection").style.display = "block";
+}
+
+function showAuthUI() {
+  document.getElementById("authSection").style.display = "block";
+  document.getElementById("todoSection").style.display = "none";
+}
+
+function clearMessage() {
+  const div = document.getElementById("messageBox");
+  if(div) div.remove();
 }
 
 // -------- Todos --------
@@ -55,14 +70,27 @@ function renderTodos(todos) {
     li.innerHTML = `
       <input type="checkbox" ${todo.completed ? "checked" : ""}
         onchange="updateTodo('${todo.id}', this.checked)">
+
       <div class="todo-content">
         <div class="todo-title">${todo.title}</div>
         <div class="todo-description">${todo.description}</div>
       </div>
-      <button onclick="deleteTodo('${todo.id}')">Delete</button>
+
+      <div class="todo-actions">
+        <button class="btn-edi"
+        onclick="editTodo('${todo.id}', '${todo.title}', '${todo.description}')">
+        Edit
+        </button>
+
+        <button class="btn-delete"
+        onclick="deleteTodo('${todo.id}')">
+        Delete
+        </button>
+      </div>
     `;
     ul.appendChild(li);
   });
+  
 }
 
 async function updateTodo(id, completed) {
@@ -83,6 +111,31 @@ async function deleteTodo(id) {
   });
   loadTodos();
 }
+
+async function editTodo(id, currentTitle, currentDescription) {
+  const newTitle = prompt("Edit title:", currentTitle);
+  if (!newTitle) return;
+
+  const newDescription = prompt("Edit description:", currentDescription);
+  if (!newDescription) return;
+
+  const token = getAuthToken();
+
+  await fetch(`${API_URL}/todos/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": token
+    },
+    body: JSON.stringify({
+      title: newTitle,
+      description: newDescription
+    })
+  });
+
+  loadTodos();
+}
+
 
 // -------- Register --------
 document.getElementById("registerForm").addEventListener("submit", async (e) => {
@@ -119,14 +172,17 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
   const data = await response.json();
 
-  if(data.token){
+  if (response.ok && data.token) {
     document.cookie = `authToken=${data.token}; path=/`;
     showMessage("Login successful!", "success");
     document.getElementById("loginForm").reset();
+    showTodosUI();
     loadTodos();
   } else {
     showMessage(data.error || "Login failed", "error");
   }
+
+
 });
 
 // -------- Create Todo --------
@@ -154,5 +210,10 @@ document.getElementById("todoForm").addEventListener("submit", async (e) => {
 });
 
 window.onload = () => {
-  if(getAuthToken()) loadTodos();
+  if(getAuthToken()) {
+    showTodosUI();
+    loadTodos();
+  } else {
+    showAuthUI();
+  }
 };

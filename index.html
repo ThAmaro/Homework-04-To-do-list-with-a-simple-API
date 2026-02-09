@@ -9,6 +9,7 @@
 <div class="container">
     <h1>Todo List App</h1>
 
+    <div id="authSection">
     <div class="form-section">
         <h2>Register</h2>
         <form id="registerForm">
@@ -17,7 +18,8 @@
             <button type="submit">Register</button>
         </form>
     </div>
-
+   
+    
     <div class="form-section">
         <h2>Login</h2>
         <form id="loginForm">
@@ -26,7 +28,9 @@
             <button type="submit">Login</button>
         </form>
     </div>
+    </div>
 
+    <div id="todoSection" style="display:none;">    
     <div class="logout-section">
         <button onclick="logout()" class="logout-btn">Logout</button>
     </div>
@@ -37,12 +41,15 @@
             <input type="text" id="title" placeholder="Title" required>
             <input type="text" id="description" placeholder="Description">
             <button type="submit">Add Todo</button>
+
+            
         </form>
     </div>
 
     <div class="todos-section">
         <h2>Your Todos</h2>
         <ul id="todoList"></ul>
+    </div>
     </div>
 </div>
 
